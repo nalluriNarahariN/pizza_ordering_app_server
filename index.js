@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 var cors = require("cors");
 require("dotenv/config");
 const user = require("./routes/user");
+const cart = require("./routes/addToCart");
 
 //----------------------------------------------
 const app = express();
@@ -31,6 +32,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, options, (err) => {
 app.use(express.json());
 app.use(cors());
 app.use("/user", user);
+app.use("/cart", cart);
 
 //----------------------------------------------
 

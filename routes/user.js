@@ -47,7 +47,6 @@ router.post(
         //hash password and store in db
         const salt = await bcrypt.genSalt(12);
         newUser.password = await bcrypt.hash(password, salt);
-        console.log(newUser);
         await newUser
           .save()
           .then((response) => {
@@ -89,6 +88,7 @@ router.post("/login", async (req, res) => {
       email,
     });
     if (user) {
+      //compare password entered with hashed password
       bcrypt
         .compare(password, user.password)
         .then((result) => {
