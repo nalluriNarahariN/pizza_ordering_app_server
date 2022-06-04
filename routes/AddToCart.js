@@ -1,7 +1,7 @@
 const express = require("express");
 
 const AddToCart = require("../models/cart");
-const router = require("./user");
+const router = require("express").Router();
 
 /**
  * @method - POST
