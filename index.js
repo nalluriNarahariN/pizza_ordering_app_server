@@ -6,6 +6,7 @@ require("dotenv/config");
 const user = require("./routes/user");
 const cart = require("./routes/addToCart");
 const transaction = require("./routes/transaction");
+const inventory = require("./routes/items");
 
 //----------------------------------------------
 const app = express();
@@ -35,6 +36,7 @@ app.use(cors());
 app.use("/user", user);
 app.use("/cart", cart);
 app.use("/transaction", transaction);
+app.use("/items", inventory);
 
 //----------------------------------------------
 
