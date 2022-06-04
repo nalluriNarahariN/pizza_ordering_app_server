@@ -20,14 +20,13 @@ router.post(
     }),
   ],
   async (req, res) => {
-    //check for validation of emil, password
+    // check for validation of emil, password
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ error: 2, errors: errors.array() });
     }
     const { firstName, lastName, email, password, contactNumber, country } =
       req.body;
-
     try {
       // check if user exists in db
       let user = await User.findOne({
@@ -47,9 +46,10 @@ router.post(
         contactNumber,
         country,
       });
+
       const salt = await bcrypt.genSalt(12);
       user.password = await bcrypt.hash(password, salt);
-
+      console.log(user);
       await user
         .save()
         .then((response) => {
