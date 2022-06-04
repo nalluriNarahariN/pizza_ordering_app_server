@@ -13,6 +13,10 @@ const AddCartSchema = mongoose.Schema({
     type: Array,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
 });
 
 // export model user with Cart Items Schema
