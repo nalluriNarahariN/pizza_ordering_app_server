@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
-  fristName: {
+  firstName: {
     type: String,
     required: true,
   },

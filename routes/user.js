@@ -32,44 +32,48 @@ router.post(
       let user = await User.findOne({
         email,
       });
+      console.log(user);
       if (user) {
         return res
           .status(400)
           .json({ error: 2, message: "User Already Exists" });
-      }
-
-      user = new User({
-        firstName,
-        lastName,
-        email,
-        hashPassword,
-        contactNumber,
-        country,
-      });
-
-      const salt = await bcrypt.genSalt(12);
-      user.password = await bcrypt.hash(password, salt);
-      console.log(user);
-      await user
-        .save()
-        .then((response) => {
-          console.log(response);
-          res.status(200).json({
-            error: 0,
-            data: {
-              message: "User added db",
-              userData: response,
-            },
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(400).json({
-            error: 1,
-            data: err,
-          });
+      } else {
+        let newUser = new User({
+          firstName,
+          lastName,
+          email,
+          //   password:password,
+          contactNumber,
+          country,
         });
-    } catch (error) {}
+
+        const salt = await bcrypt.genSalt(12);
+        newUser.password = await bcrypt.hash(password, salt);
+        console.log(newUser);
+        await newUser
+          .save()
+          .then((response) => {
+            console.log(response);
+            res.status(200).json({
+              error: 0,
+              data: {
+                message: "User added to db",
+                userData: response,
+              },
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(400).json({
+              error: 1,
+              data: err,
+            });
+          });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 1, message: error.message });
+    }
   }
 );
 
