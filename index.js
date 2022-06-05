@@ -33,6 +33,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, options, (err) => {
 
 app.use(express.json());
 app.use(cors());
+// Routes
 app.use("/user", user);
 app.use("/cart", cart);
 app.use("/transaction", transaction);
