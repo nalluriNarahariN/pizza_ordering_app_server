@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 var cors = require("cors");
 require("dotenv/config");
 const user = require("./routes/user");
-const cart = require("./routes/addToCart");
+const cart = require("./routes/AddToCart");
 const transaction = require("./routes/transaction");
-const inventory = require("./routes/items");
+const inventory = require("./routes/Items");
 
 //----------------------------------------------
 const app = express();
