@@ -64,7 +64,7 @@ router.post("/getCartItems", async (req, res) => {
             error: 0,
             data: {
               message: "Cart Items",
-              myOrders: [doc],
+              myCartItems: [doc],
             },
           });
         } else {
@@ -72,7 +72,7 @@ router.post("/getCartItems", async (req, res) => {
             error: 1,
             data: {
               message: "No items in cart",
-              myOrders: [],
+              myCartItems: [],
             },
           });
         }

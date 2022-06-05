@@ -111,14 +111,16 @@ router.post("/login", async (req, res) => {
         })
         .catch((err) => {
           console.log(error);
-          res.status(500).json({ error: 1, message: err.message });
+          res.status(500).json({ error: 1, data: { message: err.message } });
         });
     } else {
-      return res.status(400).json({ error: 2, message: "User does not exist" });
+      return res
+        .status(400)
+        .json({ error: 2, data: { message: "User does not exist" } });
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 1, message: error.message });
+    res.status(500).json({ error: 1, data: { message: error.message } });
   }
 });
 

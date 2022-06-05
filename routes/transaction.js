@@ -68,7 +68,7 @@ router.post("/buyItems", async (req, res) => {
 router.post("/myOrders", async (req, res) => {
   const { email } = req.body;
   try {
-    await MyOrders.findOne({ email }, (err, doc) => {
+    await MyOrders.find({ email }, (err, doc) => {
       if (err) {
         console.log(err);
         res.status(400).json({

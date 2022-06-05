@@ -62,7 +62,7 @@ router.get("/getInventoryItems", async (req, res) => {
             error: 0,
             data: {
               message: "Inventory Items",
-              myOrders: doc,
+              Items: doc,
             },
           });
         } else {
@@ -70,7 +70,7 @@ router.get("/getInventoryItems", async (req, res) => {
             error: 1,
             data: {
               message: "No items in inventory",
-              myOrders: doc,
+              Items: doc,
             },
           });
         }
